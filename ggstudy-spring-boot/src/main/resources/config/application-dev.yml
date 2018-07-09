@@ -1,0 +1,36 @@
+#初始配置，注入某个属性，或注入具体对象
+appConfig: 
+  name: springBoot Test
+  author: 夏帅顶呱呱
+  db1: 
+    url: jdbc:mysql://127.0.0.1:3306/ggstudy?scharacterEncoding=utf8&useSSL=false
+    username: root
+    password: 123456
+    type: org.apache.tomcat.jdbc.pool.DataSource
+    driver-class-name: com.mysql.jdbc.Driver
+  db2: 
+    url: jdbc:mysql://127.0.0.1:3306/ggstudy_bak?scharacterEncoding=utf8&useSSL=false
+    username: root
+    password: 123456
+    type: org.apache.tomcat.jdbc.pool.DataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    
+    
+    
+#用spring默认数据源配置的时候用以下
+#spring:
+#  datasource:
+#    name: ggstudyDataSource
+#    url: jdbc:mysql://127.0.0.1:3306/ggstudy?scharacterEncoding=utf8&useSSL=false
+#    username: root
+#    password: 123456
+#    type: org.apache.tomcat.jdbc.pool.DataSource
+#    driver-class-name: com.mysql.jdbc.Driver
+
+
+
+logging:
+  config: classpath:config/logback.xml
+  
+server:
+  port: 9001

@@ -1,0 +1,3 @@
+1、包含自定义组件的使用详见@EnableAnnotationTest注解
+2、包含多数据源配置，详见MyBatisConfig1和MyBatisConfig2
+3、在项目启动时加载或处理一些逻辑，详见Applocation中CommandLineRunner，其执行顺序默认为定义的先后顺序（改变顺序需要实现order接口）

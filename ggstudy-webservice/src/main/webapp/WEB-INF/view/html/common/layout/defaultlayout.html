@@ -1,0 +1,33 @@
+<#macro defaultlayout>
+<#include "/common/macro/macro.ftl"/>
+<#include "/common/parts/header.html"/>
+<#include "/common/parts/asider.html"/>
+<#include "/common/parts/footer.html"/>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>GGStudy | Index</title>
+<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+<link rel="stylesheet" href="${basePath}/assets/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="${basePath}/assets/plugins/cdn/css/font-awesome.min.css">
+<link rel="stylesheet" href="${basePath}/assets/plugins/cdn/css/ionicons.min.css">
+<link rel="stylesheet" href="${basePath}/assets/dist/css/AdminLTE.min.css">
+<link rel="stylesheet" href="${basePath}/assets/dist/css/skins/_all-skins.min.css">
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+	<div class="wrapper">
+		<@header/>
+		<@asider/>
+		<#nested>
+		<@footer/>
+	</div>
+</body>
+<script src="${basePath}/assets/plugins/jQuery/jQuery-2.2.0.min.js"></script>
+<script src="${basePath}/assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="${basePath}/assets/plugins/fastclick/fastclick.js"></script>
+<script src="${basePath}/assets/dist/js/app.min.js"></script>
+<script src="${basePath}/assets/dist/js/demo.js"></script>
+</html>
+</#macro>
