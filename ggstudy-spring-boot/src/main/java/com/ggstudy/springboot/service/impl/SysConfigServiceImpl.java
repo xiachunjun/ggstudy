@@ -25,9 +25,6 @@ public class SysConfigServiceImpl implements ISysConfigService {
 	@Autowired
 	SysConfigMapper sysConfigMapper;
 
-	@Autowired
-	IUserService userService;
-
 	public void addSysConfig(SysConfig sc) {
 		AppLogger.info(this, "SysConfigServiceImpl.addSysConfig==");
 		AppLogger.logJson(this, "SysConfigServiceImpl.addSysConfig==", sc);
@@ -38,16 +35,11 @@ public class SysConfigServiceImpl implements ISysConfigService {
 		}
 	}
 
-	@Transactional(transactionManager="transactionManager1",propagation = Propagation.REQUIRED)
+	@Transactional(transactionManager="transactionManager1",propagation = Propagation.REQUIRED,rollbackFor = Exception.class)
 	@Override
 	public void updateSysConfig(SysConfig sc) {
-		User user = new User();
-		user.setId(1);
-		user.setUserName("2222");
-		userService.updateUser(user);
 		System.out.println(sc.getCfgName());
 		int i = sysConfigMapper.updateByPrimaryKey(sc);
-		throw new RuntimeException("2222222222222");
 	}
 
 	@Override

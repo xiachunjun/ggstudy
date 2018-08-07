@@ -1,5 +1,9 @@
 package com.ggstudy.springboot.service.impl;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadPoolExecutor;
+import org.springframework.aop.framework.AopContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -11,8 +15,13 @@ import com.ggstudy.springboot.service.IUserService;
 
 @Service
 public class UserServiceImpl implements IUserService {
+
+
 	@Autowired
 	UserMapper userMapper;
+
+
+	ExecutorService es= Executors.newFixedThreadPool(5); ;
 
 	@Transactional(transactionManager = "transactionManager2", propagation = Propagation.REQUIRED)
 	@Override
@@ -30,18 +39,28 @@ public class UserServiceImpl implements IUserService {
 		}
 	}
 
-	@Transactional(transactionManager = "transactionManager2", propagation = Propagation.REQUIRED)
+    @Override
+    public void updateUserAsyc(User user) {
+        es.execute(()->updateUser(user));
+    }
+
+
 	@Override
 	public void updateUser(User user) {
 
-		try {
-			int i = userMapper.updateByPrimaryKey(user);
+        try {
+            Thread.sleep(3000);
+        }
+        catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        try {
+            int i = userMapper.updateByPrimaryKey(user);
+            System.out.println(this);
+            i = 1 / 0;
+        }catch (Exception e1){
+            throw  e1;
+        }
 
-			System.out.println(i / 0);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-
+    }
 }

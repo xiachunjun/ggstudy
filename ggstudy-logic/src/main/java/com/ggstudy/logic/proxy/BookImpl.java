@@ -1,6 +1,6 @@
 package com.ggstudy.logic.proxy;
 
-public class BookImpl implements IBook, IBook2 {
+public class BookImpl implements IBook{
 
 	@Override
 	public void addBook(String bookName) {
@@ -14,7 +14,7 @@ public class BookImpl implements IBook, IBook2 {
 		// this.addBook(bookName);
 	}
 
-	@Override
+//	@Override
 	public void addBook2(String bookName) {
 		// TODO Auto-generated method stub
 

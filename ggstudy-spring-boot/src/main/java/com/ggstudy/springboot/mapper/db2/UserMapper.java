@@ -16,13 +16,13 @@ import com.ggstudy.springboot.domain.User;
 
 public interface UserMapper {
     @Delete({
-        "delete from sc_users",
+        "delete from user",
         "where id = #{id,jdbcType=INTEGER}"
     })
     int deleteByPrimaryKey(Integer id);
 
     @Insert({
-        "insert into sc_users (user_code, ",
+        "insert into user (user_code, ",
         	"user_login_name, user_login_pwd, ",
         	"user_id_card, user_name, user_nickname, ",
         	"data_state, data_version, create_user, ",
@@ -42,7 +42,7 @@ public interface UserMapper {
         "select",
         "id, user_code, user_login_name, user_login_pwd, user_id_card, user_name, user_nickname, ",
         "data_state, data_version, create_user, update_user, create_time, update_time",
-        "from sc_users",
+        "from user",
         "where id = #{id,jdbcType=INTEGER}"
     })
     @Results({
@@ -66,7 +66,7 @@ public interface UserMapper {
         "select",
         "id, user_code, user_login_name, user_login_pwd, user_id_card, user_name, user_nickname, ",
         "data_state, data_version, create_user, update_user, create_time, update_time ",
-        "from sc_users"
+        "from user"
     })
     @Results({
         @Result(column="id", property="id", jdbcType=JdbcType.INTEGER, id=true),
@@ -86,7 +86,7 @@ public interface UserMapper {
     List<User> selectAll();
 
     @Update({
-        "update sc_users",
+        "update user",
         "set user_code = #{userCode,jdbcType=VARCHAR},",
           "user_login_name = #{userLoginName,jdbcType=VARCHAR},",
           "user_login_pwd = #{userLoginPwd,jdbcType=VARCHAR},",
@@ -105,7 +105,7 @@ public interface UserMapper {
 
     
     @Select({
-    	"select data_state from sc_users where user_login_name = #{userLoginName,jdbcType=VARCHAR}"
+    	"select data_state from user where user_login_name = #{userLoginName,jdbcType=VARCHAR}"
     })
     @Results({
     	@Result(column="data_state", property="dataState", jdbcType=JdbcType.INTEGER)
@@ -116,7 +116,7 @@ public interface UserMapper {
     @Select({
         "select",
         	"id, user_code, user_login_name, user_login_pwd, user_id_card, user_name, user_nickname ",
-        "from sc_users ",
+        "from user ",
         "where data_state=1 and user_login_name = #{userLoginName,jdbcType=VARCHAR}"
     })
     @Results({
@@ -135,7 +135,7 @@ public interface UserMapper {
     @Select({
         "select",
         	"id, user_code, user_login_name, user_name, user_nickname, data_state ",
-        "from sc_users ",
+        "from user ",
         "where data_state=1"
     })
     @Results({
@@ -150,7 +150,7 @@ public interface UserMapper {
 
     
     @Select({
-    	"select max(user_code) from sc_users"
+    	"select max(user_code) from user"
     })
     Integer getMaxCode();
     

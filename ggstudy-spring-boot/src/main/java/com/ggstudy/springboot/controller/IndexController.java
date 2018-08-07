@@ -3,6 +3,8 @@ package com.ggstudy.springboot.controller;
 import java.util.List;
 import java.util.Map;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
@@ -44,7 +46,7 @@ public class IndexController {
 	@Autowired
 	IUserService userService;
 
-	@RequestMapping("/KVMap")
+    @RequestMapping("/KVMap")
 	public Object KVMap() {
 		// return KVMap.get("key");
 //		System.out.println(configClient.getClientName() + "11111111111");
@@ -80,6 +82,23 @@ public class IndexController {
 		sysConfigService.updateSysConfig(sys);
 		return "ok";
 	}
+
+	@RequestMapping("/updateUser")
+	public String updateUser(@RequestParam Integer id,@RequestParam String name) {
+		User user=new User();
+        user.setId(id);
+		user.setUserName(name);
+        /**
+         * 异步执行方式，事务不生效的
+         */
+		userService.updateUserAsyc(user);
+        /**
+         * 同步方式，事务生效
+         */
+//        userService.updateUser(user);
+		return "ok";
+	}
+
 
 	@RequestMapping("/getSys")
 	public SysConfig getSys(@RequestParam Integer id) {
