@@ -1,6 +1,7 @@
 package com.ggstudy.logic;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 import java.util.function.Predicate;
@@ -9,6 +10,7 @@ public class ListTest {
 
     public static void main(String[] args) {
         //		arrayListTest();
+        test2();
     }
 
 
@@ -86,6 +88,20 @@ public class ListTest {
         arrayList.removeIf(p);
         System.out.println("方法四结果：" + arrayList);
 
+    }
+
+    public static void test2(){
+
+        List<String> list = Arrays.asList("abc");
+
+        // class java.util.Arrays$ArrayList
+        System.out.println(list.getClass());
+
+        // class [Ljava.lang.String;
+        Object[] objArray = list.toArray();
+        System.out.println(objArray.getClass());
+
+        objArray[0] = new Object();
     }
 
 }

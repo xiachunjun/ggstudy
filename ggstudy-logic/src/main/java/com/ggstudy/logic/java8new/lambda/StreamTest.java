@@ -1,6 +1,7 @@
 package com.ggstudy.logic.java8new.lambda;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -17,7 +18,7 @@ import java.util.stream.Collectors;
 public class StreamTest {
 
     public static void main(String[] args) {
-        test10();
+        test11();
         List<Byte> newDetailTypes = new ArrayList<>();
         System.out.println(newDetailTypes.indexOf("abbbbbbbbbbb"));
 
@@ -245,5 +246,17 @@ public class StreamTest {
 
         System.out.println(b2);
     }
+
+    public static void test11() {
+        List<BigDecimal> aaa = new ArrayList<>();
+        aaa.add(new BigDecimal(1));
+        aaa.add(new BigDecimal(2));
+        aaa.add(new BigDecimal(3));
+        aaa.add(new BigDecimal(4));
+
+        System.out.println(aaa.stream().reduce(BigDecimal.ZERO,BigDecimal::add));
+    }
+
+
 
 }
