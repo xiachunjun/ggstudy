@@ -129,7 +129,6 @@
 				<artifactId>maven-war-plugin</artifactId>
 				<version>3.0.0</version>
 				<configuration>
-					<version>3.1</version>
 					<!-- <packagingExcludes>**/*-env.properties,**/log4j.properties</packagingExcludes> -->
 				</configuration>
 			</plugin>

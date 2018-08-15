@@ -6,12 +6,12 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.ggstudy.domain.user.UserDomain;
-import com.mysql.jdbc.StringUtils;
 
 @Controller
 public class IndexController {
@@ -43,7 +43,7 @@ public class IndexController {
 	public ModelAndView unlock(String password, String goToUrl) {
 		ModelAndView mv = null;
 		if (PWD.equals(password)) {
-			if (StringUtils.isNullOrEmpty(goToUrl)) {
+			if (StringUtils.isEmpty(goToUrl)) {
 				mv = new ModelAndView("redirect:/index");
 			} else {
 				mv = new ModelAndView("redirect:" + goToUrl);

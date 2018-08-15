@@ -1,5 +1,6 @@
 package com.ggstudy.springboot.service.impl;
 
+import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadPoolExecutor;
@@ -62,5 +63,10 @@ public class UserServiceImpl implements IUserService {
             throw  e1;
         }
 
+    }
+
+    @Override
+    public List<User> queryAll(){
+        return userMapper.selectAll();
     }
 }
