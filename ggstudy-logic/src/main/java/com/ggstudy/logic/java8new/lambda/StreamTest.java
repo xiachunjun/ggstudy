@@ -163,7 +163,7 @@ public class StreamTest {
         }
         dtos.add(new Dto("name1", new Date(), 100));
 
-        /**
+        /*
          * Collectors.toMap转map操作
          * 1、key是Dto::getName，即dtos中每个元素去调用getName方法，作为map的key
          * 2、new一个HashMapmap作为map的value,其中存放dto的状态
@@ -179,7 +179,7 @@ public class StreamTest {
     }
 
     public static void test7() {
-        /** 获取单词，并且去重 **/
+        /* 获取单词，并且去重 **/
         List<String> list = Arrays.asList("hello welcome", "world hello", "hello world", "hello world welcome");
 
         // map和flatmap的区别
@@ -189,7 +189,7 @@ public class StreamTest {
     }
 
     public static void test8() {
-        /** 获取单词，并且去重 **/
+        /* 获取单词，并且去重 **/
         List<String> list = Arrays.asList("a", "c", "x", "c", "d", "b", "g");
 
         List<String> list1 = list.parallelStream().sorted(String::compareTo).collect(Collectors.toList());

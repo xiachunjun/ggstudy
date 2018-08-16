@@ -1,16 +1,18 @@
 package com.ggstudy.logic;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.List;
+import com.ggstudy.logic.java8new.lambda.Dto;
+import com.ggstudy.logic.model.Model;
+
+import java.math.BigDecimal;
+import java.util.*;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 public class ListTest {
 
     public static void main(String[] args) {
         //		arrayListTest();
-        test2();
+        test3();
     }
 
 
@@ -90,7 +92,7 @@ public class ListTest {
 
     }
 
-    public static void test2(){
+    public static void test2() {
 
         List<String> list = Arrays.asList("abc");
 
@@ -104,4 +106,43 @@ public class ListTest {
         objArray[0] = new Object();
     }
 
+    /**
+     * 两个list左链接
+     * 先转map再处理，和for套for性能差异比较
+     */
+    public static void test3() {
+        List<Model> list1 = new ArrayList<>();
+        List<Model> list2 = new ArrayList<>();
+        for (int i = 0; i < 10000; i++) {
+            list1.add(new Model(i, "a"));
+            list2.add(new Model(i, "b"));
+        }
+        Long begin = System.nanoTime();
+        Map<Integer, Model> m1 = list1.stream().collect(Collectors.toMap(Model::getKey, model -> {
+            return model;
+        }));
+        Map<Integer, Model> m2 = list2.stream().collect(Collectors.toMap(Model::getKey, model -> {
+            return model;
+        }));
+        List<Model> list3 = m1.entrySet().stream().map(
+                en -> {
+                    en.getValue().setName(en.getValue().getName() + m2.get(en.getKey()).getName());
+                    return en.getValue();
+                }
+        ).collect(Collectors.toList());
+        Long end = System.nanoTime();
+        System.out.println(end - begin);
+
+        Long begin1 = System.nanoTime();
+        for (Model mod1 : list1) {
+            for (Model mod2 : list2) {
+                if (mod1.getKey().equals(mod2.getKey())) {
+                    mod1.setName(mod1.getName() + mod2.getName());
+                }
+            }
+        }
+        Long end1 = System.nanoTime();
+        System.out.println(end1 - begin1);
+
+    }
 }

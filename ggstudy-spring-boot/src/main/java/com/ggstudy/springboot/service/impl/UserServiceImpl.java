@@ -67,6 +67,7 @@ public class UserServiceImpl implements IUserService {
 
     @Override
     public List<User> queryAll(){
-        return userMapper.selectAll();
+        List<User> a=userMapper.selectAll();
+        return a;
     }
 }
