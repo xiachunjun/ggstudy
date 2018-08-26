@@ -11,8 +11,8 @@ import java.util.stream.Collectors;
 public class ListTest {
 
     public static void main(String[] args) {
-        //		arrayListTest();
-        test3();
+        arrayListTest();
+//        test3();
     }
 
 
@@ -81,10 +81,11 @@ public class ListTest {
         Predicate<Integer> p = new Predicate<Integer>() {
             @Override
             public boolean test(Integer t) {
-                if (t == 2 || t == 4) {
-                    return true;
-                }
-                return false;
+                return ifMethod(t);
+            }
+
+            private boolean ifMethod(Integer t) {
+                return null != t && (t == 2 || t == 4);
             }
         };
         arrayList.removeIf(p);
