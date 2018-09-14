@@ -107,7 +107,7 @@
             <dependency>
                 <groupId>org.mybatis.generator</groupId>
                 <artifactId>mybatis-generator-core</artifactId>
-                <version>1.3.5</version>
+                <version>1.3.7</version>
                 <scope>test</scope>
             </dependency>
 
@@ -206,5 +206,6 @@
         <module>ggstudy-webservice</module>
         <module>ggstudy-starter-mod</module>
         <module>ggstudy-zookeeper</module>
+        <module>ggstudy-generator</module>
     </modules>
 </project>

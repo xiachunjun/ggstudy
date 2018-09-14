@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 public class StreamTest {
 
     public static void main(String[] args) {
-        test11();
+        test6();
         List<Byte> newDetailTypes = new ArrayList<>();
         System.out.println(newDetailTypes.indexOf("abbbbbbbbbbb"));
 
@@ -152,7 +152,7 @@ public class StreamTest {
     public static void test6() {
         List<Dto> dtos = new ArrayList<Dto>();
         for (int i = 0; i < 20; i++) {
-            dtos.add(new Dto("name" + i, new Date(), i % 2));
+            dtos.add(new Dto("name" , new Date(), i % 2));
             try {
                 Thread.sleep(10);
             }
@@ -170,12 +170,15 @@ public class StreamTest {
          * 3、(v1,v2)->v2的作用是当发生key重复时使用
          *
          */
-        Map<String, Map<String, String>> map = dtos.parallelStream().collect(Collectors.toMap(Dto::getName, dto -> {
-            Map<String, String> m = new HashMap<String, String>();
-            m.put("status", String.valueOf(dto.getStatus()));
-            return m;
-        }, (v1, v2) -> v2));
-        System.out.println(map);
+//        Map<String, Map<String, String>> map = dtos.parallelStream().collect(Collectors.toMap(Dto::getName, dto -> {
+//            Map<String, String> m = new HashMap<String, String>();
+//            m.put("status", String.valueOf(dto.getStatus()));
+//            return m;
+//        }, (v1, v2) ->{
+//            System.out.println(v1.getName());
+//
+//        } ));
+//        System.out.println(map);
     }
 
     public static void test7() {

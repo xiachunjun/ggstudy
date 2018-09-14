@@ -43,6 +43,7 @@ public class Application implements AsyncConfigurer {
 		};
 	}
 
+
 	@Bean
 	public CommandLineRunner commandLineRunner2(ApplicationContext ctx) {
 		return args -> {
