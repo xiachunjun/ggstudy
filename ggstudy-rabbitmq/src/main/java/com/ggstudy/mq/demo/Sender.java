@@ -24,6 +24,7 @@ public class Sender {
 			Connection conn = ConnectPool.getConn();
 			Channel channel = conn.createChannel();
 			channel.exchangeDeclare(EXCHANGE_NAME, "direct");
+//			channel.exchangeDeclare(EXCHANGE_NAME, "topic");
 			String message = getMessage(strings);
 			channel.basicPublish(EXCHANGE_NAME, "111", null, message.getBytes());
 			System.out.println(" [x] 发送 '" + message + "'");

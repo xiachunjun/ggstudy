@@ -207,5 +207,6 @@
         <module>ggstudy-starter-mod</module>
         <module>ggstudy-zookeeper</module>
         <module>ggstudy-generator</module>
+        <module>ggstudy-spring</module>
     </modules>
 </project>
