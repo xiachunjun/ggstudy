@@ -3,6 +3,7 @@ package com.ggstudy.springboot.controller;
 import com.ggstudy.springboot.domain.User;
 import com.ggstudy.springboot.model.UserReq;
 import com.ggstudy.springboot.service.IUserService;
+import com.ggstudy.springboot.service.impl.TransactionServiceImpl;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,6 +17,9 @@ public class CRUDController {
 
     @Autowired
     IUserService userService;
+
+    @Autowired
+    TransactionServiceImpl transactionServiceImpl;
 
     @RequestMapping("/crud/create")
     public void create(@RequestBody UserReq userReq) {
@@ -37,6 +41,11 @@ public class CRUDController {
     @RequestMapping("/crud/delete")
     public void delete() {
 
+    }
+
+    @RequestMapping("/crud/transactionTest")
+    public void transactionTest(String msg){
+        transactionServiceImpl.updateTwoTab(msg);
     }
 
 }
