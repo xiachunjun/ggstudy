@@ -13,10 +13,12 @@ import com.rabbitmq.client.Envelope;
 public class Receiver {
 	public static final String QUEUE_NAME = "queue_name";
 	public static final String EXCHANGE_NAME = "exchange_direct";
+	public static final String EXCHANGE_TOPIC = "exchange_topic";
 
 	public static void main(String[] args) {
 		Receiver r = new Receiver();
-		r.recv();
+//		r.recv();
+		r.exchangeRecv();
 	}
 
 	public void exchangeRecv() {
@@ -24,10 +26,10 @@ public class Receiver {
 		final Channel channel;
 		try {
 			channel = conn.createChannel();
-			channel.exchangeDeclare(EXCHANGE_NAME, "direct");
+			channel.exchangeDeclare(EXCHANGE_TOPIC, "topic");
 			String queueName = channel.queueDeclare().getQueue();
 			// QueueingConsumer consumer = new QueueingConsumer(channel);
-			channel.queueBind(queueName, EXCHANGE_NAME, "111");
+			channel.queueBind(queueName, EXCHANGE_TOPIC, "111");
 			channel.basicQos(1);// 预取1条消息
 			Consumer consumer = new ConsumerImpl(channel);
 			channel.basicConsume(queueName, false, consumer);// 第二个参数false是不会自动确认消息，true自动确认

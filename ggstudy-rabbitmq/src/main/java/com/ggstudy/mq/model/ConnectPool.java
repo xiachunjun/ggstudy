@@ -10,11 +10,12 @@ public class ConnectPool {
 	
 	public static Connection getConn() {
 		ConnectionFactory factory = new ConnectionFactory();
-		factory.setHost("10.214.168.134");
-//		factory.setHost("localhost");
+//		factory.setHost("10.214.168.134");
+		factory.setHost("127.0.0.1");
 		factory.setUsername("admin");
 		factory.setPassword("admin");
 		factory.setPort(5672);
+		factory.setVirtualHost("adminVH");
 		factory.setConnectionTimeout(60000);
 		factory.setHandshakeTimeout(60000);//设置TCP握手超时时间，解决网络不好时获取链接超时
 		try {

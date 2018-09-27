@@ -11,28 +11,30 @@ import com.rabbitmq.client.MessageProperties;
 public class Sender {
 	public static final String QUEUE_NAME = "queue_name";
 	public static final String EXCHANGE_NAME = "exchange_direct";
+	public static final String EXCHANGE_TOPIC = "exchange_topic";
 
 	public static void main(String[] args) {
 		Sender s = new Sender();
-		for(int i=0;i<10;i++){
-			s.sendMsg("aa"+i);
-		}
+//		for(int i=0;i<10;i++){
+//			s.sendMsg("aa"+i);
+//		}
+
+		s.exchangeSend("aaaaaaaaaaaaa");
 	}
 
 	public void exchangeSend(String... strings) {
 		try {
 			Connection conn = ConnectPool.getConn();
 			Channel channel = conn.createChannel();
-			channel.exchangeDeclare(EXCHANGE_NAME, "direct");
-//			channel.exchangeDeclare(EXCHANGE_NAME, "topic");
+//			channel.exchangeDeclare(EXCHANGE_NAME, "direct");
+			channel.exchangeDeclare(EXCHANGE_TOPIC, "topic");
 			String message = getMessage(strings);
-			channel.basicPublish(EXCHANGE_NAME, "111", null, message.getBytes());
+			channel.basicPublish(EXCHANGE_TOPIC, "111", null, message.getBytes());
 			System.out.println(" [x] 发送 '" + message + "'");
 			channel.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (TimeoutException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
