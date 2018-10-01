@@ -28,6 +28,9 @@ public class UserServiceImpl implements IUserService {
 	@Override
 	public void addUser(User user) {
 		try {
+            user=new User();
+            user.setUserName("测试专用");
+
 			userMapper.insert(user);
 			User aa = userMapper.selectByPrimaryKey(user.getId());
 			System.out.println(aa);
@@ -36,7 +39,7 @@ public class UserServiceImpl implements IUserService {
 			e.printStackTrace();
 
 		} finally {
-			// throw new RuntimeException();
+//			 throw new RuntimeException();
 		}
 	}
 

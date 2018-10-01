@@ -47,5 +47,9 @@ public class CRUDController {
     public void transactionTest(String msg){
         transactionServiceImpl.updateTwoTab(msg);
     }
+    @RequestMapping("/crud/innerTransTest")
+    public void innerTransTest(String msg){
+        transactionServiceImpl.service内部调用事务测试(msg);
+    }
 
 }

@@ -208,5 +208,6 @@
         <module>ggstudy-zookeeper</module>
         <module>ggstudy-generator</module>
         <module>ggstudy-spring</module>
+        <module>ggstudy-spring-transaction</module>
     </modules>
 </project>

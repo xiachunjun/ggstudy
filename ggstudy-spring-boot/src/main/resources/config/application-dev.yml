@@ -25,7 +25,7 @@ appConfig:
 #    username: root
 #    password: 123456
 #    type: org.apache.tomcat.jdbc.pool.DataSource
-#    driver-class-name: com.mysql.jdbc.Driver
+#    driver-class-name: com.mysql.cj.jdbc.Driver
 
 
 

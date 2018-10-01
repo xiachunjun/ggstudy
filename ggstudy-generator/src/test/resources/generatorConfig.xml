@@ -32,17 +32,20 @@
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
         <!--ANNOTATEDMAPPER-->
-        <javaClientGenerator type="XMLMAPPER" targetPackage="dao" targetProject="./ggstudy-generator/src/main/java">
-            <property name="enableSubPackages" value="true"/>
+
+        <javaClientGenerator type="ANNOTATEDMAPPER" targetPackage="dao" targetProject="./ggstudy-generator/src/main/java">
+            <property name="enableSubPackages" value="true" />
         </javaClientGenerator>
 
-        <table schema="ggstudy" tableName="sc_users" domainObjectName="User">
-            <property name="useActualColumnNames" value="true"/>
+        <!--属性顺序要求必须是property,generatedKey。。。。-->
+        <table schema="ggstudy" tableName="ggstudy_trans_b" domainObjectName="TransB"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+            <property name="useActualColumnNames" value="false"/>
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
-            <!--<columnOverride column="DATE_FIELD" property="startDate"/>表属性DATE_FIELD，在java中用startDate属性名-->
+            <!--true-model将直接使用库里的字段名-->
             <!--<ignoreColumn column="FRED"/>忽略的列-->
             <!--<columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR"/>-->
         </table>
-
-    </context>
+</context>
 </generatorConfiguration>
