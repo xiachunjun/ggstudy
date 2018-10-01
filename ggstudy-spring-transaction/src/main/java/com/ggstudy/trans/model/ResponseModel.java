@@ -11,13 +11,13 @@ public class ResponseModel {
     private String resultMsg;
     private Map<String, Object> dataMap = new HashMap<>();
 
-
     public ResponseModel() {
 
     }
 
     public ResponseModel(String resultCode, String resultMsg) {
-
+        this.resultCode = resultCode;
+        this.resultMsg = resultMsg;
     }
 
     public static ResponseModel succecc() {
