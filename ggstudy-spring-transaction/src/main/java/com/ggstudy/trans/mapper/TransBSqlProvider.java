@@ -18,7 +18,7 @@ public class TransBSqlProvider {
         }
         
         if (record.getTransStatus() != null) {
-            sql.VALUES("trans_status", "#{transStatus,jdbcType=VARCHAR}");
+            sql.VALUES("trans_status", "#{transStatus,jdbcType=INTEGER}");
         }
         
         if (record.getCreateTime() != null) {
@@ -45,7 +45,7 @@ public class TransBSqlProvider {
         }
         
         if (record.getTransStatus() != null) {
-            sql.SET("trans_status = #{transStatus,jdbcType=VARCHAR}");
+            sql.SET("trans_status = #{transStatus,jdbcType=INTEGER}");
         }
         
         if (record.getCreateTime() != null) {

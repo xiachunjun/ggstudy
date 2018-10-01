@@ -12,7 +12,7 @@ public class Trans {
 
     private String transPwd;
 
-    private String transStatus;
+    private Integer transStatus;
 
     private Date createTime;
 

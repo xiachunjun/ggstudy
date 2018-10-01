@@ -4,6 +4,7 @@ import com.ggstudy.trans.domain.TransB;
 import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.type.JdbcType;
 
+
 @Mapper
 public interface TransBMapper {
     @Delete({
@@ -17,7 +18,7 @@ public interface TransBMapper {
         "trans_status, create_time, ",
         "update_time)",
         "values (#{transName,jdbcType=VARCHAR}, #{transPwd,jdbcType=VARCHAR}, ",
-        "#{transStatus,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, ",
+        "#{transStatus,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, ",
         "#{updateTime,jdbcType=TIMESTAMP})"
     })
     @SelectKey(statement="SELECT LAST_INSERT_ID()", keyProperty="id", before=false, resultType=Integer.class)
@@ -37,7 +38,7 @@ public interface TransBMapper {
         @Result(column="id", property="id", jdbcType=JdbcType.INTEGER, id=true),
         @Result(column="trans_name", property="transName", jdbcType=JdbcType.VARCHAR),
         @Result(column="trans_pwd", property="transPwd", jdbcType=JdbcType.VARCHAR),
-        @Result(column="trans_status", property="transStatus", jdbcType=JdbcType.VARCHAR),
+        @Result(column="trans_status", property="transStatus", jdbcType=JdbcType.INTEGER),
         @Result(column="create_time", property="createTime", jdbcType=JdbcType.TIMESTAMP),
         @Result(column="update_time", property="updateTime", jdbcType=JdbcType.TIMESTAMP)
     })
@@ -50,7 +51,7 @@ public interface TransBMapper {
         "update ggstudy_trans_b",
         "set trans_name = #{transName,jdbcType=VARCHAR},",
           "trans_pwd = #{transPwd,jdbcType=VARCHAR},",
-          "trans_status = #{transStatus,jdbcType=VARCHAR},",
+          "trans_status = #{transStatus,jdbcType=INTEGER},",
           "create_time = #{createTime,jdbcType=TIMESTAMP},",
           "update_time = #{updateTime,jdbcType=TIMESTAMP}",
         "where id = #{id,jdbcType=INTEGER}"

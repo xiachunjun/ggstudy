@@ -23,7 +23,7 @@
             <property name="forceBigDecimals" value="false"/>
         </javaTypeResolver>
 
-        <javaModelGenerator targetPackage="model" targetProject="./ggstudy-generator/src/main/java">
+        <javaModelGenerator targetPackage="domain" targetProject="./ggstudy-generator/src/main/java">
             <property name="enableSubPackages" value="true"/>
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
@@ -33,12 +33,12 @@
         </sqlMapGenerator>
         <!--ANNOTATEDMAPPER-->
 
-        <javaClientGenerator type="ANNOTATEDMAPPER" targetPackage="dao" targetProject="./ggstudy-generator/src/main/java">
+        <javaClientGenerator type="ANNOTATEDMAPPER" targetPackage="mapper" targetProject="./ggstudy-generator/src/main/java">
             <property name="enableSubPackages" value="true" />
         </javaClientGenerator>
 
         <!--属性顺序要求必须是property,generatedKey。。。。-->
-        <table schema="ggstudy" tableName="ggstudy_trans_b" domainObjectName="TransB"
+        <table schema="ggstudy" tableName="ggstudy_trans" domainObjectName="Trans"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
             <property name="useActualColumnNames" value="false"/>

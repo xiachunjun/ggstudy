@@ -23,7 +23,7 @@ appConfig:
 #    name: ggstudyDataSource
 #    url: jdbc:mysql://127.0.0.1:3306/ggstudy?scharacterEncoding=utf8&useSSL=false
 #    username: root
-#    password: 123456
+#    password: 12345678
 #    type: org.apache.tomcat.jdbc.pool.DataSource
 #    driver-class-name: com.mysql.cj.jdbc.Driver
 
