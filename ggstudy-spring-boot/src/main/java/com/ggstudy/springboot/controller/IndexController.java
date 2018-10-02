@@ -1,12 +1,12 @@
 package com.ggstudy.springboot.controller;
 
-import java.util.List;
-import java.util.Map;
-
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import com.alibaba.fastjson.JSONObject;
+import com.ggstudy.springboot.domain.SysConfig;
+import com.ggstudy.springboot.domain.User;
+import com.ggstudy.springboot.service.ISysConfigService;
+import com.ggstudy.springboot.service.IUserService;
+import com.ggstudy.springboot.support.AppConfig;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,12 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.alibaba.fastjson.JSONObject;
-import com.ggstudy.springboot.domain.SysConfig;
-import com.ggstudy.springboot.domain.User;
-import com.ggstudy.springboot.service.ISysConfigService;
-import com.ggstudy.springboot.service.IUserService;
-import com.ggstudy.springboot.support.AppConfig;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 //import com.ggstudy.starter.model.ConfigClient;
 
 @RestController
@@ -148,5 +145,18 @@ public class IndexController {
 		List<String> res = sysConfigService.asyncTest();
 		return res;
 	}
+
+
+	@RequestMapping(value = "/xmlTest",produces = {"application/json","application/xml"})
+	public List<String> xmlTest() {
+		List<String> stringList=new ArrayList<String>(){{
+			add("1");
+			add("2");
+			add("3");
+			add("4");
+		}};
+		return stringList;
+	}
+
 
 }
