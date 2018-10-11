@@ -2,27 +2,18 @@ package com.ggstudy.logic.java8new.lambda;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Optional;
+import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class StreamTest {
 
     public static void main(String[] args) {
-        test6();
-        List<Byte> newDetailTypes = new ArrayList<>();
-        System.out.println(newDetailTypes.indexOf("abbbbbbbbbbb"));
-
-        System.out.println("abc".compareTo("abc"));
+        test12();
+//        List<Byte> newDetailTypes = new ArrayList<>();
+//        System.out.println(newDetailTypes.indexOf("abbbbbbbbbbb"));
+//
+//        System.out.println("abc".compareTo("abc"));
 
     }
 
@@ -258,6 +249,17 @@ public class StreamTest {
         aaa.add(new BigDecimal(4));
 
         System.out.println(aaa.stream().reduce(BigDecimal.ZERO,BigDecimal::add));
+    }
+    public static void test12() {
+        List<Dto> dtos = new ArrayList<Dto>();
+        for (int i = 0; i < 20; i++) {
+            dtos.add(new Dto("name" + i, new Date(), i % 2));
+
+        }
+       Map<Date,Dto> a= dtos.stream().collect(Collectors.toMap(Dto::getDate,dto->dto,(v1,v2)->v1));
+        Map<Date,List<Dto>> b= dtos.stream().collect(Collectors.groupingBy(Dto::getDate,Collectors.mapping(e->e, Collectors.toList())));
+        System.out.println(a);
+        System.out.println(b);
     }
 
 

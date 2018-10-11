@@ -1,9 +1,7 @@
 package com.ggstudy.logic;
 
-import com.ggstudy.logic.java8new.lambda.Dto;
 import com.ggstudy.logic.model.Model;
 
-import java.math.BigDecimal;
 import java.util.*;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -11,13 +9,16 @@ import java.util.stream.Collectors;
 public class ListTest {
 
     public static void main(String[] args) {
-        arrayListTest();
-//        test3();
+//        arrayListTest();
+        test4();
     }
-
+public static void  test4(){
+    List<Integer> arrayList = new ArrayList<>();
+    arrayList.forEach(System.out::println);
+}
 
     public static void arrayListTest() {
-        List<Integer> arrayList = new ArrayList<Integer>();
+        List<Integer> arrayList = new ArrayList<>();
 
         /**
          * 边循环，边删除，存在的问题：
