@@ -10,7 +10,7 @@ public class ListTest {
 
     public static void main(String[] args) {
 //        arrayListTest();
-        test4();
+        test3();
     }
 public static void  test4(){
     List<Integer> arrayList = new ArrayList<>();
@@ -111,11 +111,14 @@ public static void  test4(){
     /**
      * 两个list左链接
      * 先转map再处理，和for套for性能差异比较
+     *
+     * 大概在3000左右时耗时接近，小于3000，for-for快，大于3000先转map快
+     *
      */
     public static void test3() {
         List<Model> list1 = new ArrayList<>();
         List<Model> list2 = new ArrayList<>();
-        for (int i = 0; i < 10000; i++) {
+        for (int i = 0; i < 3000; i++) {
             list1.add(new Model(i, "a"));
             list2.add(new Model(i, "b"));
         }

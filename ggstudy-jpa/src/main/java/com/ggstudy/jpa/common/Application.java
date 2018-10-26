@@ -59,7 +59,7 @@ public class Application {
 //        <!-- 是否在归还到连接池中前进行检验，建议开启上一项关闭此项 -->
 //        <property name="testOnReturn" value="false"/>
         dataSource.setTestOnReturn(false);
-//        <!-- 检测用SQL，验证从连接池取出的连接,在将连接返回给调用者之前，以上三项有一项为true时必须指定，mysql改用select 1-->
+//        <!-- 检测用SQL，验证从连接池取出的连接,在将连接返回给调用者之前，以上三项有一项为true时必须指定，mysql改用s.elect 1-->
 //        <property name="validationQuery">
 //        <value>select 1 from dual</value>
 //        </property>
